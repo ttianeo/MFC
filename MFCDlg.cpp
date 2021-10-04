@@ -189,6 +189,12 @@ HCURSOR CMFCDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+
+
+
+
 //人数统计
 int FindUaername() {
 	ifstream outFile("Data.csv", ios::in);
@@ -271,9 +277,11 @@ vector<string> Rtitle(vector<int> Rnums) {
 			}
 			getline(sin, field, ',');
 			getline(sin, field); //将字符串流sin中的字符读入到field字符串中，以逗号为分隔符 
-			if (n == key) {
-				img_path = field.c_str();
 
+			if (n == key) {
+				//field = "res/test.bmp";
+				img_path = field.c_str();
+				
 			}
 			++n;
 			if (n == 4) {
@@ -304,6 +312,14 @@ vector<string> Rtitle(vector<int> Rnums) {
 	ss << key;
 	ss >> res;
 	tit.push_back(res);
+
+
+	string t1;
+	stringstream t2;
+	t2 << img_path;
+	t2 >> t1;
+	tit.push_back(t1);
+	
 	return tit;
 }
 
@@ -329,19 +345,20 @@ void CMFCDlg::OnBnClickedButton5()
 	str = obj[3].c_str();
 	B4_NAME.SetWindowTextW(str);
 
+	str = obj[5].c_str();
 
 
+	CString strFileName = str;
 
-	//GetDlgItemText(IDC_BUTTON1, i); //取按钮标题
-	//GetDlgItem(IDC_BUTTON1)->SetWindowText(_T(obj[0]));
-	//if (i == _T("开始"))
-	//	GetDlgItem(IDC_BUTTON1)->SetWindowText(_T("停止"));
-	//else
-	//	GetDlgItem(IDC_BUTTON1)->SetWindowText(_T("开始"));
+	LPCWSTR lpcwStr = strFileName.AllocSysString();
+
+	//MessageBox(strFileName, lpcwStr);
 	
+
+
 	CStatic* pWnd = (CStatic*)GetDlgItem(IDC_STATIC1); // 得到 Picture Control 句柄
 	pWnd->ModifyStyle(0, SS_BITMAP); // 修改它的属性为位图
-	pWnd->SetBitmap((HBITMAP)::LoadImage(NULL, _T("test.bmp"),
+	pWnd->SetBitmap((HBITMAP)::LoadImage(NULL, str,
 		IMAGE_BITMAP,
 		0,
 		0,

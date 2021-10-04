@@ -47,7 +47,7 @@ public:
 	afx_msg void OnBnClickedButton2();
 	afx_msg void OnBnClickedButton3();
 	afx_msg void OnBnClickedButton4();
-
+	CString IMG_PATH;
 	afx_msg void OnStnClickedStatic1();
 	CStatic past_public;
 };
