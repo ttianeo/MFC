@@ -108,7 +108,7 @@ BOOL CMFCDlg::OnInitDialog()
 	B2_NAME.SetWindowTextW(L"点击下一题");
 	B3_NAME.SetWindowTextW(L"点击下一题");
 	B4_NAME.SetWindowTextW(L"点击下一题");
-	int key;
+	
 
 
 
