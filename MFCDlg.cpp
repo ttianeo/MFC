@@ -191,6 +191,34 @@ HCURSOR CMFCDlg::OnQueryDragIcon()
 
 
 
+//数据写入(username,usernum,img_path),n为一次性写入数据的个数，img_path根据学号生成
+void DataWrite(int n) {
+	string username, usernum, img_path;
+
+	ofstream outFile("Data.csv", ios::app);//如果没有文件，生成空文件(利用app的特性，在最后一行添加数据)
+
+	if (!outFile)//特殊情况处理
+	{
+		cout << "打开文件失败！" << endl;
+		exit(1);
+	}
+	//写入数据
+	for (int i = 0; i < n; i++)
+	{
+		cout << "请输入用户名：";
+		cin >> username;
+		cout << "请输入学号：";
+		cin >> usernum;
+		img_path = usernum + ".jpg";
+		outFile << username << ",";
+		outFile << usernum << ",";
+		outFile << img_path << endl;
+	}
+	//关闭文件，释放内存
+	outFile.close();
+	cout << "操作结束，数据写入成功，请及时将文件放入img文件中" << endl;
+	cout << "注意：文件名为 学号.jpg" << endl;
+}
 
 
 
