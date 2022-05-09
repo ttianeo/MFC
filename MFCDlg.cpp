@@ -450,7 +450,7 @@ void CMFCDlg::OnBnClickedButton4()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	if (KEY == "3") {
-		CString str = _T("正确");
+		CString str = _T("正确的");
 		MessageBox(str, _T("提示！"));
 	}
 	else {
